@@ -9,6 +9,7 @@ import { Content } from './components/content'
 
 import { LoadingPost } from './components/loading';
 
+import { PageProps } from 'next';
 
 export async function generateMetadata({params:{slug}} :{
     params : {slug:string}
@@ -54,7 +55,13 @@ export async function generateMetadata({params:{slug}} :{
 
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
+interface CustomPageProps extends PageProps {
+    params: {
+      slug: string;
+    };
+  }
+  
+  export default function Page({ params }: CustomPageProps) {
     const { slug } = params;
 
 
