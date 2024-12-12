@@ -54,9 +54,8 @@ export async function generateMetadata({params:{slug}} :{
 
 }
 
-export default  async function Page({params:{slug}} :{
-    params : {slug:string}
-}){
+export default function Page({ params }: { params: { slug: string } }) {
+    const { slug } = params;
 
 
     //const {objects}:PostProps = await getItemBySlug(slug)
