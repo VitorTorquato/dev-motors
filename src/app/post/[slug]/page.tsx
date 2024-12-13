@@ -60,10 +60,10 @@ export async function generateMetadata(
     }
 }
 
-
+    
   
   
-  export default async function Page(props) {
+  export default async function Page({props} : any ) {
       const params = await props.params;
 
 
