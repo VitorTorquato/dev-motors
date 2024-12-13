@@ -10,9 +10,16 @@ import { LoadingPost } from './components/loading';
 import {Metadata} from 'next'
 
 
-export async function generateMetadata({params:{slug}} :{
-    params : {slug:string}
-}): Promise<Metadata>{
+export async function generateMetadata(
+    props:{
+        params : Promise<{slug:string}>
+    }
+): Promise<Metadata> {
+    const params = await props.params;
+
+    const {
+        slug
+    } = params;
 
 
     try{
@@ -51,25 +58,25 @@ export async function generateMetadata({params:{slug}} :{
             description: "Oficina de carros personalizada",
         }
     }
-
 }
 
 
   
   
-  export default async function Page({ params}){
+  export default async function Page(props) {
+      const params = await props.params;
 
 
-    
+      //npx @next/codemod@canary next-async-request-api 
 
-    
 
-    
-    return(
-        <>
-        <Suspense fallback={<LoadingPost/>}>
-           <Content slug={params.slug}/>
-        </Suspense>
-        </>
-    )
-}
+
+
+      return(
+          <>
+          <Suspense fallback={<LoadingPost/>}>
+             <Content slug={params.slug}/>
+          </Suspense>
+          </>
+      )
+  }
