@@ -11,6 +11,7 @@ export async function Content({slug} : {slug:string} ){
 
 
     const {objects}:PostProps = await getItemBySlug(slug)
+   
 
     return(
         <>

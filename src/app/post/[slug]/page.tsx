@@ -4,12 +4,11 @@ import { PostProps } from '@/utils/post.type'
 import { getItemBySlug } from '@/utils/actions/get-data'
 
 
-import {Metadata} from 'next'
 import { Content } from './components/content'
 
 import { LoadingPost } from './components/loading';
+import {Metadata} from 'next'
 
-import { PageProps } from 'next';
 
 export async function generateMetadata({params:{slug}} :{
     params : {slug:string}
@@ -55,17 +54,13 @@ export async function generateMetadata({params:{slug}} :{
 
 }
 
-interface CustomPageProps extends PageProps {
-    params: {
-      slug: string;
-    };
-  }
+
   
-  export default function Page({ params }: CustomPageProps) {
-    const { slug } = params;
+  
+  export default async function Page({ params}){
 
 
-    //const {objects}:PostProps = await getItemBySlug(slug)
+    
 
     
 
@@ -73,7 +68,7 @@ interface CustomPageProps extends PageProps {
     return(
         <>
         <Suspense fallback={<LoadingPost/>}>
-           <Content slug={slug}/>
+           <Content slug={params.slug}/>
         </Suspense>
         </>
     )
